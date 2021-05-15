@@ -1,8 +1,38 @@
 <p>pets-table works!</p>
-<div class="row">
+
+<div class="table-responsive">
+    <table id="dashboard_table" class="table table-striped data-table" style="width: 100%">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Pet Id</th>
+                <th>Pet Name</th>
+                <th>Age</th>
+                <th>Species</th>
+                <th>Breed</th>
+                <th>Descripton</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let pokemon of virtualPets; let i = index;">
+                <tr>
+                    <td><img [src]="pokemon.sprite" alt="pokemon.name"></td>
+                    <td>{{ pokemon.id }}</td>
+                    <td>{{ pokemon.name }}</td>
+                    <td>{{ pokemon.age }}</td>
+                    <td>{{ pokemon.species }}</td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+</div>
+
+
+
+<!-- <div class="row">
     <div class="col-md-12 mt-5">
         <div class="card-header">
-            Reimbursement Tickets
+            List of Pets
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -19,12 +49,12 @@
                     <tbody id="dashboard_table_body">
                         <tr>
                             <td>
-                                <img class="fit-picture" src="https://images.indianexpress.com/2021/04/puppy-1903313_1280.jpg" alt="pet 1 image" width="100" height="60">
+                                <img class="fit-picture" src="https://images.indianexpress.com/2021/04/puppy-1903313_1280.jpg" alt="pet 1 image" width="100" height="100">
                             </td>
                             <td>Marco</td>
-                            <td>61</td>
-                            <td>Edinburgh</td>
-                            <td>Paid</td>
+                            <td>1</td>
+                            <td>Dog</td>
+                            <td>Labrador</td>
                             
                         </tr>
                     </tbody>
@@ -41,4 +71,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
