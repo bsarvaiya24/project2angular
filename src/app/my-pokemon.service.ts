@@ -10,8 +10,12 @@ export class MyPokemonService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getPokemon(): Observable<Pokemon> {
-    return this.httpClient.get<Pokemon>('https://pokeapi.co/api/v2/pokemon/1');
+  getPokemon(id: number): Observable<Pokemon> {
+    let stringId = id.toString();
+    return this.httpClient.get<Pokemon>(`https://pokeapi.co/api/v2/pokemon/${stringId}`);
+    // return this.httpClient.get<Pokemon>(`https://pokeapi.co/api/v2/pokemon/${stringId}`, {
+    //   withCredentials: true,
+    // });
   }
 
 }

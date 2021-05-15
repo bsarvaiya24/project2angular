@@ -5,7 +5,8 @@ export interface VirtualPet {
     species: string,
     name: string,
     age: number,
+    breed: string,
+    description: string,
     sprite: string
-    // breed: string,
-    // description: string
+    
 }
