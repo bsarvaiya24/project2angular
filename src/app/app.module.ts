@@ -8,17 +8,23 @@ import { AppComponent } from './app.component';
 import { MyPokemonService } from './my-pokemon.service';
 import { NavbartopComponent } from './navbartop/navbartop.component';
 import { PetsTableComponent } from './pets-table/pets-table.component';
+import { AppRoutingModule } from './app-routing.module';
+import { PetDetailsComponent } from './pet-details/pet-details.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbartopComponent,
-    PetsTableComponent
+    PetsTableComponent,
+    PetDetailsComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [MyPokemonService],
   bootstrap: [AppComponent]

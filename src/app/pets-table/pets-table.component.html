@@ -1,6 +1,6 @@
-<p>pets-table works!</p>
 
-<div class="table-responsive">
+<div class="table-responsive m-5 p-5 border border-dark rounded-top">
+    <span>Pets-table-component</span>
     <table id="dashboard_table" class="table table-striped data-table" style="width: 100%">
         <thead>
             <tr>
@@ -16,13 +16,13 @@
         <tbody>
             <ng-container *ngFor="let pokemon of virtualPets; let i = index;">
                 <tr>
-                    <td><img [src]="pokemon.sprite" alt="pokemon.name"></td>
-                    <td>{{ pokemon.id }}</td>
+                    <td routerLink="/virtual_pets/{{ pokemon.id }}"><img [src]="pokemon.sprite" alt="pokemon.name"></td>
+                    <td><button class="btn btn-primary" routerLink="/virtual_pets/{{ pokemon.id }}">{{ pokemon.id }}</button></td>
                     <td>{{ pokemon.name }}</td>
                     <td>{{ pokemon.age | number: '1.0-0' }}</td>
                     <td>{{ pokemon.species }}</td>
                     <td>{{ pokemon.breed }}</td>
-                    <td style="width:  20%">{{ pokemon.description }}</td>
+                    <td style="width: 20%">{{ pokemon.description }}</td>
                 </tr>
             </ng-container>
         </tbody>

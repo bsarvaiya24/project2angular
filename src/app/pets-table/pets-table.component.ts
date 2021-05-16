@@ -12,48 +12,34 @@ import { browser } from 'protractor';
 })
 export class PetsTableComponent implements OnInit {
 
-  petData: { 
-    id: number,
-    type: { pet_type_id: number, pet_type: string },
-    status: { pet_status_id: number, pet_status: string }, 
-    species: string,
-    breed: string,
-    name: string,
-    age: number,
-    description: string
-  }[];
-
   pokemons: Pokemon[] = [];
   virtualPets: VirtualPet[] = [];
 
   randomNumbers: number[] = [];
-  
 
   generateRandomNumbers() {
     while(this.randomNumbers.length < 10){
       var r = Math.floor(Math.random() * 898) + 1;
       if(this.randomNumbers.indexOf(r) === -1) this.randomNumbers.push(r);
     }
-    console.log(this.randomNumbers);
   }
 
-  
-
-  myPokemonService: MyPokemonService;
-  myPokemonSpeciesService: MyPokemonSpeciesService;
-
-  constructor(myPokemonService: MyPokemonService, myPokemonSpeciesService: MyPokemonSpeciesService) { 
+  constructor(private myPokemonService: MyPokemonService, private myPokemonSpeciesService: MyPokemonSpeciesService) { 
     this.myPokemonService=myPokemonService;
     this.myPokemonSpeciesService=myPokemonSpeciesService;
   }
 
   ngOnInit(): void {
-    // this.renderTable();
-    this.onGetPokemon();
+    
+    if (!sessionStorage.getItem('yourComponentNameLoadedAlready')) {
+      this.generateRandomNumbers();
+      this.onGetPokemon();
+    }
+    
   }
 
   onGetPokemon(){
-    this.generateRandomNumbers();
+    
     for(let i=0; i<this.randomNumbers.length; i++) {
       this.myPokemonService.getPokemon(this.randomNumbers[i]).subscribe((pokemon) => {
         // console.log(this.pokemons);
@@ -84,7 +70,7 @@ export class PetsTableComponent implements OnInit {
           sprite
         }
   
-        this.myPokemonSpeciesService.getPokemonSpecies().subscribe((pokemonSpecies) => {
+        this.myPokemonSpeciesService.getPokemonSpecies(this.randomNumbers[i]).subscribe((pokemonSpecies) => {
           let egg_groups = pokemonSpecies.egg_groups;
           let flavor_text_entries = pokemonSpecies.flavor_text_entries;
           // console.log("egg_groups length: "+egg_groups.length);
