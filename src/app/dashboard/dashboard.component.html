@@ -1,13 +1,13 @@
 <br>
-<p>dashboard works!</p>
+
 
 <main>
 
-    <div class="container-fluid">
+    <div class="container-fluid m-5">
 
-        <div class="row search-trim">
-
-            <div class="m-5 p-3 border border-secondary">
+        <div class="row m-3 search-trim">
+            <div>Search Real Pets</div>
+            <div class=" p-3 border border-secondary">
                 <span class="m-2">Filter: </span>
                 <div class="btn-group mx-2" role="group" aria-label="Basic radio toggle button group">
                     <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
@@ -25,6 +25,31 @@
                 <button class="mx-5 btn btn-primary">Search</button>
             </div>
 
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 mb-3">
+                <div id="blue-card-link" class="card text-white bg-primary h-100">
+                    <!-- <a id="blue-card-link" href="#"> -->
+                    <!-- <div id="blue-card-header" class="card-header text-center">Add</div> -->
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Browse Real Pets</h5>
+                        <!-- <p class="card-text">Click here to start a new ticket for expense reimbursement.</p> -->
+                    </div>
+                    <!-- </a> -->
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card text-white bg-success h-100">
+                    <!-- <a id="blue-card-link" href="#"> -->
+                    <!-- <div id="blue-card-header" class="card-header text-center">Add</div> -->
+                    <div class="card-body">
+                        <h5 class="card-title text-center" routerLink="/virtual_pets">Browse Virtual Pets</h5>
+                        <!-- <p class="card-text">Click here to start a new ticket for expense reimbursement.</p> -->
+                    </div>
+                    <!-- </a> -->
+                </div>
+            </div>
         </div>
 
     </div>

@@ -40,8 +40,17 @@
                     </span>
                 </div>
                 <div class="p-2 d-flex justify-content-between">
-                    <button class="btn btn-success">Make Adoption Request</button>
+                    <button *ngIf="!showAdoption" class="btn btn-outline-success" (click)="showAdoptionRequest()">Make Adoption Request</button>
+                    <button *ngIf="showAdoption" class="btn btn-warning" (click)="hideAdoptionRequest()">Close</button>
                     <button class="btn btn-secondary" (click)="goBack()">Back</button>
+                </div>
+                <div *ngIf="showAdoption" class="p-2">
+                    <span class="col-md-3">Adoption request description: </span>
+                    <span class="input-group mb-3 col-md-3">
+                        <textarea class="form-control" cols="30" rows="5" id="requestDescription" [(ngModel)]="requestDescription">
+                        </textarea>
+                    </span>
+                    <button class="btn btn-success" (click)="submitRequest()">Submit Request</button>
                 </div>
             </div>
         </div>

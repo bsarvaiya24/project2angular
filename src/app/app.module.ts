@@ -11,6 +11,7 @@ import { PetsTableComponent } from './pets-table/pets-table.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PetDetailsComponent } from './pet-details/pet-details.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     NavbartopComponent,
     PetsTableComponent,
     PetDetailsComponent,
-    DashboardComponent
+    DashboardComponent,
+    ManagerDashboardComponent
   ],
   imports: [
     BrowserModule,

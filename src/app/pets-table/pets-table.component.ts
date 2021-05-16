@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MyPokemonService } from '../my-pokemon.service';
 import { MyPokemonSpeciesService } from '../my-pokemon-species.service';
-import { Pokemon } from 'src/model/pokemon';
 import { VirtualPet } from 'src/model/virtualPet';
-import { browser } from 'protractor';
 
 @Component({
   selector: 'app-pets-table',
@@ -12,7 +10,6 @@ import { browser } from 'protractor';
 })
 export class PetsTableComponent implements OnInit {
 
-  pokemons: Pokemon[] = [];
   virtualPets: VirtualPet[] = [];
 
   randomNumbers: number[] = [];
@@ -30,11 +27,21 @@ export class PetsTableComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.generateRandomNumbers();
+    this.onGetPokemon();
+
+    // TRYING TO SAVE THE LIST OF POKEMON FOR CURRENT USER
     
-    if (!sessionStorage.getItem('yourComponentNameLoadedAlready')) {
-      this.generateRandomNumbers();
-      this.onGetPokemon();
-    }
+    // if (!sessionStorage.getItem('yourComponentNameLoadedAlready')) {
+    // if (this.virtualPets.length === 0) {
+    // localStorage.removeItem('virtualPets');
+    // console.log(JSON.parse(localStorage.getItem('virtualPets')));
+    // if (JSON.parse(localStorage.getItem('virtualPets')) == null) {
+    //   this.generateRandomNumbers();
+    //   this.onGetPokemon();
+    // } else {
+    //   this.virtualPets = JSON.parse(localStorage.getItem('virtualPet'));
+    // }
     
   }
 
@@ -93,8 +100,22 @@ export class PetsTableComponent implements OnInit {
   
       });
     }
-    
 
+    // TRYING TO SAVE THE LIST OF POKEMON FOR CURRENT USER
+
+    // console.log(this.virtualPets);
+    // console.log(this.virtualPets.join());
+    // console.log(JSON.stringify(this.virtualPets));
+
+    // let virtualPetsObject: { key: string, value: VirtualPet[] } = { key: "virtualPets", value: this.virtualPets };
+    // console.log(virtualPetsObject);
+
+    // virtualPetsObject.key = 'virtualPets';
+    // virtualPetsObject.value = this.virtualPets;
+
+    // localStorage.removeItem('virtualPets');
+    // localStorage.setItem('virtualPets',JSON.stringify(this.virtualPets));
+    // console.log(JSON.parse(localStorage.getItem('virtualPets')));
   }
 
 }

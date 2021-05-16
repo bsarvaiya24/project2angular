@@ -13,6 +13,9 @@ import { MyPokemonSpeciesService } from '../my-pokemon-species.service';
 export class PetDetailsComponent implements OnInit {
 
   virtualPet: VirtualPet;
+  showAdoption: boolean = false;
+  requestDescription: string;
+  adoptionRequest = {adoption_request_pet_id: 1, adoption_request_description: ""};
 
   constructor(private route: ActivatedRoute, private location: Location, private myPokemonService: MyPokemonService, private myPokemonSpeciesService: MyPokemonSpeciesService ) { }
 
@@ -76,6 +79,21 @@ export class PetDetailsComponent implements OnInit {
 
   goBack(): void{
     this.location.back();
+  }
+
+  showAdoptionRequest(): void {
+    this.showAdoption = true;
+  }
+
+  hideAdoptionRequest(): void {
+    this.showAdoption = false;
+  }
+
+  submitRequest(): void {
+    this.adoptionRequest.adoption_request_pet_id = this.virtualPet.id;
+    this.adoptionRequest.adoption_request_description = this.requestDescription;
+    console.log("POST http request, adoptionRequest object sent:");
+    console.log(this.adoptionRequest);
   }
 
 }
