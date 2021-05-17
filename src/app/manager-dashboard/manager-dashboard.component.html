@@ -2,27 +2,66 @@
 
 <main>
 
-    <div class="container-fluid m-5">
+    <div class="container-fluid div-display-contents">
+
+        <div class="row m-5">
+            <div class="row border border-silver">
+                <div class="col-md-3 my-3">
+                    <div id="blue-card-link" class="card text-white bg-primary h-100 text-center">
+                        <div id="blue-card-header" class="card-header">Add</div>
+                        <div class="card-body">
+                            <h4 class="card-title">Add New Pet</h4>
+                            <p class="card-text">Click here to add a new pet into the available pets for adoption.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 my-3">
+                    <div id="blue-card-link" class="card text-white bg-primary h-100 text-center">
+                        <div id="blue-card-header" class="card-header">View</div>
+                        <div class="card-body">
+                            <h4 class="card-title">View Adoption requests</h4>
+                            <p class="card-text">Click here to view the history of adoption requests including pending.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-3">
+                <div class="table-responsive border border-dark rounded-top"> 
+                    <span>Recent Adoption Requests</span>
+                    <table id="manager_dashboard_table" class="table table-striped data-table" style="width: 100%">
+                        <thead>
+                            <tr>
+                                <th>Request Id</th>
+                                <th>User Fullname</th>
+                                <th>Pet name</th>
+                                <th>Pet type</th>
+                                <th>Pet species</th>
+                                <th>Pet breed</th>
+                                <th>Pet image</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Mariah Smith</td>
+                                <td>Koda</td>
+                                <td>real</td>
+                                <td>dog</td>
+                                <td>great pyrenees</td>
+                                <td><img src="https://pbs.twimg.com/media/C5FXA5BXAAANel3.jpg" alt="koda dog" width="200px" height="140px"></td>
+                            </tr>
+                        </tbody>
+                        
+                    </table>
+                </div>
+            </div>
+
+        </div>
 
         <div class="row m-3">
-            <div class="col-md-3 mb-3">
-                <div id="blue-card-link" class="card text-white bg-primary h-100 text-center">
-                    <div id="blue-card-header" class="card-header">Add</div>
-                    <div class="card-body">
-                        <h4 class="card-title">Add New Pet</h4>
-                        <p class="card-text">Click here to add a new pet into the available pets for adoption.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 mb-3">
-                <div id="blue-card-link" class="card text-white bg-primary h-100 text-center">
-                    <div id="blue-card-header" class="card-header">View</div>
-                    <div class="card-body">
-                        <h4 class="card-title">View Adoption requests</h4>
-                        <p class="card-text">Click here to view the history of adoption requests including pending.</p>
-                    </div>
-                </div>
-            </div>
+
+
+
         </div>
 
     </div>
