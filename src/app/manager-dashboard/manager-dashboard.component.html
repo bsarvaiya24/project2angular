@@ -1,5 +1,3 @@
-<p>manager-dashboard works!</p>
-
 <main>
 
     <div class="container-fluid div-display-contents">
@@ -7,7 +5,7 @@
         <div class="row m-5">
             <div class="row border border-silver">
                 <div class="col-md-3 my-3">
-                    <div id="blue-card-link" class="card text-white bg-primary h-100 text-center">
+                    <div routerLink="/add_pet" class="card text-white bg-primary h-100 text-center">
                         <div id="blue-card-header" class="card-header">Add</div>
                         <div class="card-body">
                             <h4 class="card-title">Add New Pet</h4>
@@ -16,7 +14,7 @@
                     </div>
                 </div>
                 <div class="col-md-3 my-3">
-                    <div id="blue-card-link" class="card text-white bg-primary h-100 text-center">
+                    <div routerLink="/view_all_requests" class="card text-white bg-primary h-100 text-center">
                         <div id="blue-card-header" class="card-header">View</div>
                         <div class="card-body">
                             <h4 class="card-title">View Adoption requests</h4>
@@ -41,14 +39,17 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <!-- INSERT *ngFor HERE -->
                             <tr>
-                                <td>1</td>
+                                <td>
+                                    <button class="btn btn-primary" routerLink="/adoption_request_details/1">1</button>
+                                </td>
                                 <td>Mariah Smith</td>
                                 <td>Koda</td>
                                 <td>real</td>
                                 <td>dog</td>
                                 <td>great pyrenees</td>
-                                <td><img src="https://pbs.twimg.com/media/C5FXA5BXAAANel3.jpg" alt="koda dog" width="200px" height="140px"></td>
+                                <td><img src="https://pbs.twimg.com/media/C5FXA5BXAAANel3.jpg" alt="koda dog" width="200px" height="140px" routerLink="/adoption_request_details/1"></td>
                             </tr>
                         </tbody>
                         

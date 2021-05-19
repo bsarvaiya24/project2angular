@@ -12,6 +12,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { PetDetailsComponent } from './pet-details/pet-details.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard.component';
+import { AddPetComponent } from './add-pet/add-pet.component';
+import { AdoptionRequestDetailsComponent } from './adoption-request-details/adoption-request-details.component';
+import { ViewAllRequestsComponent } from './view-all-requests/view-all-requests.component';
+import { ManagerViewAllPetsComponent } from './manager-view-all-pets/manager-view-all-pets.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { EditPetComponent } from './edit-pet/edit-pet.component';
 
 @NgModule({
   declarations: [
@@ -20,13 +26,19 @@ import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard
     PetsTableComponent,
     PetDetailsComponent,
     DashboardComponent,
-    ManagerDashboardComponent
+    ManagerDashboardComponent,
+    AddPetComponent,
+    AdoptionRequestDetailsComponent,
+    ViewAllRequestsComponent,
+    ManagerViewAllPetsComponent,
+    EditPetComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [MyPokemonService],
   bootstrap: [AppComponent]

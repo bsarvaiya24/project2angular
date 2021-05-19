@@ -1,0 +1,50 @@
+<main class="mx-3">
+    <button class="btn btn-secondary my-3" (click)="goBack()">Back</button>
+
+    <div class="table-responsive p-4 border border-dark rounded-top">
+        <span>View All Adoption Requests</span>
+        <div class="row">
+            <div class="dropdown d-flex">
+                <button class="btn btn-secondary ms-auto" type="button" id="dropdownFilterMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                    Filter by
+                    <i class="bi bi-arrow-down-up"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownFilterMenu">
+                    <li><a id="filter-all" class="dropdown-item" href="#">All</a></li>
+                    <li><a id="filter-pending" class="dropdown-item" href="#">Pending</a></li>
+                    <li><a id="filter-approved" class="dropdown-item" href="#">Approved</a></li>
+                    <li><a id="filter-denied" class="dropdown-item" href="#">Denied</a></li>
+                </ul>
+            </div>
+        </div>
+        <table id="view_all_requests" class="table table-striped data-table" style="width: 100%">
+            <thead>
+                <tr>
+                    <th>Request Id</th>
+                    <th>User Fullname</th>
+                    <th>Pet Name</th>
+                    <th>Pet Age</th>
+                    <th>Pet Type</th>
+                    <th>Pet Species</th>
+                    <th>Pet Breed</th>
+                    <th>Pet Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <button class="btn btn-primary" routerLink="/adoption_request_details/1">1</button>
+                    </td>
+                    <td>Mariah Smith</td>
+                    <td>Koda</td>
+                    <td>5</td>
+                    <td>real</td>
+                    <td>dog</td>
+                    <td>great pyrenees</td>
+                    <td><img src="https://pbs.twimg.com/media/C5FXA5BXAAANel3.jpg" alt="koda dog" width="200px" height="140px" routerLink="/adoption_request_details/1"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</main>

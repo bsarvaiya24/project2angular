@@ -1,0 +1,117 @@
+<main class="m-5">
+    <button class="btn btn-secondary my-3" (click)="goBack()">Back</button>
+
+    <div class="container-fluid border border-dark p-4">
+        <div class="row">Adoption Request Details</div>
+        <hr>
+
+        <!-- Details Panel -->
+        <div class="row p-5">
+
+            <!-- Pet Details Panel -->
+            <div class="col-lg-6">Pet Details
+                <div class="container-fluid border border-dark">
+                    <div class="p-3 d-flex justify-content-center">
+                        <img src="https://pbs.twimg.com/media/C5FXA5BXAAANel3.jpg" alt="pet name alt text" class="border border-bottom-0" width="200px" height="140px">
+                    </div>
+                    <div class="p-2">
+                        <span class="col-md-3">Pet Name: </span>
+                        <span class="input-group mb-3 col-md-3">
+                            <!-- [value]="virtualPet.name" -->
+                            <input type="text" class="form-control" value="static name" disabled>
+                        </span>
+                    </div>
+                    <div class="p-2">
+                        <span class="col-md-3">Pet Age: </span>
+                        <span class="input-group mb-3 col-md-3">
+                            <!-- [value]="virtualPet.age" -->
+                            <input type="text" class="form-control" value="static age" disabled>
+                        </span>
+                    </div>
+                    <div class="p-2">
+                        <span class="col-md-3">Pet Species: </span>
+                        <span class="input-group mb-3 col-md-3">
+                            <!-- [value]="virtualPet.species" -->
+                            <input type="text" class="form-control" value="static species" disabled>
+                        </span>
+                    </div>
+                    <div class="p-2">
+                        <span class="col-md-3">Pet Breed: </span>
+                        <span class="input-group mb-3 col-md-3">
+                            <!-- [value]="virtualPet.breed" -->
+                            <input type="text" class="form-control" value="static breed" disabled>
+                        </span>
+                    </div>
+                    <div class="p-2">
+                        <span class="col-md-3">Pet Description: </span>
+                        <span class="input-group mb-3 col-md-3">
+                            <!-- [value]="virtualPet.description" -->
+                            <textarea class="form-control" cols="30" rows="3" disabled>
+                            </textarea>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!-- Pet Details Panel -->
+
+
+            <!-- User Details Panel -->
+            <div class="col-lg-6">
+                <div class="row">User Details
+                    <div class="container-fluid border border-dark py-3">
+                        <div class="p-2">
+                            <span class="col-md-3">User Fullname: </span>
+                            <span class="input-group mb-3 col-md-3">
+                                <!-- [value]="virtualPet.name" -->
+                                <input type="text" class="form-control" value="static user fullname" disabled>
+                            </span>
+                        </div>
+                        <div class="p-2">
+                            <span class="col-md-3">Request Description: </span>
+                            <span class="input-group mb-3 col-md-3">
+                                <!-- [value]="virtualPet.description" -->
+                                <textarea class="form-control" cols="30" rows="3" disabled>
+                                </textarea>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row"> Manager Section (*ngIf = clickApprove || clickDeny)
+                    <div class="container-fluid border border-dark py-3">
+                        <div class="p-2">
+                            <span class="col-md-3">Response Description: </span>
+                            <span class="input-group mb-3 col-md-3">
+                                <!-- [value]="virtualPet.description" -->
+                                <textarea class="form-control" cols="30" rows="3" placeholder="Type here the Reason for approval/denial of this request.">
+                                </textarea>
+                            </span>
+                        </div>
+                        <div class="p-2">
+                            *ngIf(clickDeny)
+                            <button class="btn btn-danger  mx-3">Deny</button>
+                            *ngIf(clickApprove)
+                            <button class="btn btn-success  mx-3">Approve</button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <!-- User Details Panel -->
+
+        </div>
+        <!-- Details Panel -->
+
+
+        <!-- Action Panel -->
+        <div class="row px-5">
+            <div class="container-fluid d-flex justify-content-end">
+                <button class="btn btn-outline-secondary mx-3">Back</button>
+                <button class="btn btn-outline-danger  mx-3">Deny</button>
+                <button class="btn btn-outline-success  mx-3">Approve</button>
+            </div>
+        </div>
+        <!-- Action Panel -->
+
+    </div>
+
+</main>

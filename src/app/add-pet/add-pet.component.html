@@ -1,0 +1,70 @@
+<main class="mx-3">
+    <button class="btn btn-secondary my-3" (click)="goBack()">Back</button>
+
+    <div class="container-fluid border border-dark p-4">
+        <div class="m-4">Add New Real Pet</div>
+        <div class="row mx-4 d-flex justify-content-around">
+            <div class="col-md-5">
+                <span >Pet Name: </span>
+                <span class="input-group mb-3">
+                    <input type="text" class="form-control">
+                </span>
+            </div>
+            <div class="col-md-5">
+                <span >Pet Species: </span>
+                <span class="input-group mb-3">
+                    <input type="text" class="form-control">
+                </span>
+            </div>
+        </div>
+        <div class="row mx-4 d-flex justify-content-around">
+            <div class="col-md-5">
+                <span >Pet Age: </span>
+                <span class="input-group mb-3">
+                    <input type="number" class="form-control">
+                </span>
+            </div>
+            <div class="col-md-5">
+                <span >Pet Breed: </span>
+                <span class="input-group mb-3">
+                    <input type="text" class="form-control">
+                </span>
+            </div>
+        </div>
+        <div class="row mx-4 d-flex justify-content-around">
+            <div class="col-md-5">
+                <span >Pet Image: </span>
+                <span class="input-group mb-3">
+                    <input type="file" class="form-control" id="upload_image_file" />
+                </span>
+            </div>
+            <div class="col-md-5">
+                <span >Pet Type: </span>
+                <span class="input-group mb-3">
+                    <div class="btn-group mx-2" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                        <label class="btn btn-outline-primary" for="btnradio1">Real</label>
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="btnradio2">Virtual</label>
+                    </div>
+                </span>
+            </div>
+        </div>
+        <div class="row mx-4  d-flex justify-content-center">
+            <div class="col-md-8">
+                <span >Pet Description: </span>
+                <span class="input-group mb-3">
+                    <textarea name="pet_description" rows="5" cols="140"></textarea>
+                </span>
+            </div>
+        </div>
+        <div class="row mx-4 px-5 d-flex justify-content-start">
+            <div class="col-md-12">
+                <button class="btn btn-success mx-2">Submit Pet</button>
+                <button class="btn btn-outline-secondary mx-2">Clear</button>
+            </div>
+        </div>
+        
+    </div>
+
+</main>
