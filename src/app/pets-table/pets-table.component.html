@@ -1,30 +1,31 @@
-
-<div class="table-responsive m-5 p-5 border border-dark rounded-top">
-    <span>Pets-table-component</span>
-    <table id="virtual_pets_table" class="table table-striped data-table" style="width: 100%">
-        <thead>
-            <tr>
-                <th>Image</th>
-                <th>Pet Id</th>
-                <th>Pet Name</th>
-                <th>Age</th>
-                <th>Species</th>
-                <th>Breed</th>
-                <th>Descripton</th>
-            </tr>
-        </thead>
-        <tbody>
-            <ng-container *ngFor="let pokemon of virtualPets; let i = index;">
+<main class="p-3">
+    <div class="table-responsive m-5 p-5 border border-dark rounded-top">
+        <span>Pets-table-component</span>
+        <table id="virtual_pets_table" class="table table-striped data-table" style="width: 100%">
+            <thead>
                 <tr>
-                    <td routerLink="/virtual_pets/{{ pokemon.id }}"><img [src]="pokemon.sprite" alt="pokemon.name"></td>
-                    <td><button class="btn btn-primary" routerLink="/virtual_pets/{{ pokemon.id }}">{{ pokemon.id }}</button></td>
-                    <td>{{ pokemon.name }}</td>
-                    <td>{{ pokemon.age | number: '1.0-0' }}</td>
-                    <td>{{ pokemon.species }}</td>
-                    <td>{{ pokemon.breed }}</td>
-                    <td style="width: 20%">{{ pokemon.description }}</td>
+                    <th>Image</th>
+                    <th>Pet Id</th>
+                    <th>Pet Name</th>
+                    <th>Age</th>
+                    <th>Species</th>
+                    <th>Breed</th>
+                    <th>Descripton</th>
                 </tr>
-            </ng-container>
-        </tbody>
-    </table>
-</div>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let pokemon of virtualPets; let i = index;">
+                    <tr>
+                        <td routerLink="/virtual_pets/{{ pokemon.id }}"><img [src]="pokemon.sprite" alt="pokemon.name"></td>
+                        <td><button class="btn btn-primary" routerLink="/virtual_pets/{{ pokemon.id }}">{{ pokemon.id }}</button></td>
+                        <td>{{ pokemon.name }}</td>
+                        <td>{{ pokemon.age | number: '1.0-0' }}</td>
+                        <td>{{ pokemon.species }}</td>
+                        <td>{{ pokemon.breed }}</td>
+                        <td style="width: 20%">{{ pokemon.description }}</td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </div>
+</main>

@@ -1,60 +1,57 @@
-
-<div class="container-fluid">
-
-    <div *ngIf="virtualPet" class="row m-5 p-5 border border-dark">
-
-        <div class="col-md-6 d-flex justify-content-center">
-            <img [src]="virtualPet.sprite" alt="virtualPet.name" class="border border-bottom-0">
-        </div>
-        <div class="col-md-6">
-            <div class="container-fluid">
-                <div class="p-2">
-                    <span class="col-md-3">Pet Name: </span>
-                    <span class="input-group mb-3 col-md-3">
-                        <input type="text" class="form-control" [value]="virtualPet.name" disabled>
-                    </span>
-                </div>
-                <div class="p-2">
-                    <span class="col-md-3">Pet Age: </span>
-                    <span class="input-group mb-3 col-md-3">
-                        <input type="text" class="form-control" [value]="virtualPet.age" disabled>
-                    </span>
-                </div>
-                <div class="p-2">
-                    <span class="col-md-3">Pet Species: </span>
-                    <span class="input-group mb-3 col-md-3">
-                        <input type="text" class="form-control" [value]="virtualPet.species" disabled>
-                    </span>
-                </div>
-                <div class="p-2">
-                    <span class="col-md-3">Pet Breed: </span>
-                    <span class="input-group mb-3 col-md-3">
-                        <input type="text" class="form-control" [value]="virtualPet.breed" disabled>
-                    </span>
-                </div>
-                <div class="p-2">
-                    <span class="col-md-3">Pet Description: </span>
-                    <span class="input-group mb-3 col-md-3">
-                        <textarea class="form-control" cols="30" rows="5" [value]="virtualPet.description" disabled>
-                        </textarea>
-                    </span>
-                </div>
-                <div class="p-2 d-flex justify-content-between">
-                    <button *ngIf="!showAdoption" class="btn btn-outline-success" (click)="showAdoptionRequest()">Make Adoption Request</button>
-                    <button *ngIf="showAdoption" class="btn btn-outline-danger" (click)="hideAdoptionRequest()">Close</button>
-                    <button class="btn btn-secondary" (click)="goBack()">Back</button>
-                </div>
-                <div *ngIf="showAdoption" class="p-2">
-                    <span class="col-md-3">Adoption request description: </span>
-                    <span class="input-group mb-3 col-md-3">
-                        <textarea class="form-control" cols="30" rows="5" id="requestDescription" [(ngModel)]="requestDescription">
-                        </textarea>
-                    </span>
-                    <button class="btn btn-success" (click)="submitRequest()">Submit Request</button>
+<main class="p-3">
+    <div class="container-fluid">
+        <div *ngIf="virtualPet" class="row m-5 p-5 border border-dark">
+            <div class="col-md-6 d-flex justify-content-center">
+                <img [src]="virtualPet.sprite" alt="virtualPet.name" class="border border-bottom-0">
+            </div>
+            <div class="col-md-6">
+                <div class="container-fluid">
+                    <div class="p-2">
+                        <span class="col-md-3">Pet Name: </span>
+                        <span class="input-group mb-3 col-md-3">
+                            <input type="text" class="form-control" [value]="virtualPet.name" disabled>
+                        </span>
+                    </div>
+                    <div class="p-2">
+                        <span class="col-md-3">Pet Age: </span>
+                        <span class="input-group mb-3 col-md-3">
+                            <input type="text" class="form-control" [value]="virtualPet.age" disabled>
+                        </span>
+                    </div>
+                    <div class="p-2">
+                        <span class="col-md-3">Pet Species: </span>
+                        <span class="input-group mb-3 col-md-3">
+                            <input type="text" class="form-control" [value]="virtualPet.species" disabled>
+                        </span>
+                    </div>
+                    <div class="p-2">
+                        <span class="col-md-3">Pet Breed: </span>
+                        <span class="input-group mb-3 col-md-3">
+                            <input type="text" class="form-control" [value]="virtualPet.breed" disabled>
+                        </span>
+                    </div>
+                    <div class="p-2">
+                        <span class="col-md-3">Pet Description: </span>
+                        <span class="input-group mb-3 col-md-3">
+                            <textarea class="form-control" cols="30" rows="5" [value]="virtualPet.description" disabled>
+                            </textarea>
+                        </span>
+                    </div>
+                    <div class="p-2 d-flex justify-content-between">
+                        <button *ngIf="!showAdoption" class="btn btn-outline-success" (click)="showAdoptionRequest()">Make Adoption Request</button>
+                        <button *ngIf="showAdoption" class="btn btn-outline-danger" (click)="hideAdoptionRequest()">Close</button>
+                        <button class="btn btn-secondary" (click)="goBack()">Back</button>
+                    </div>
+                    <div *ngIf="showAdoption" class="p-2">
+                        <span class="col-md-3">Adoption request description: </span>
+                        <span class="input-group mb-3 col-md-3">
+                            <textarea class="form-control" cols="30" rows="5" id="requestDescription" [(ngModel)]="requestDescription">
+                            </textarea>
+                        </span>
+                        <button class="btn btn-success" (click)="submitRequest()">Submit Request</button>
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
-
-</div>
+</main>

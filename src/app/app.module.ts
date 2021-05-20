@@ -18,6 +18,7 @@ import { ViewAllRequestsComponent } from './view-all-requests/view-all-requests.
 import { ManagerViewAllPetsComponent } from './manager-view-all-pets/manager-view-all-pets.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { EditPetComponent } from './edit-pet/edit-pet.component';
+import { OffcanvasComponent } from './offcanvas/offcanvas.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { EditPetComponent } from './edit-pet/edit-pet.component';
     AdoptionRequestDetailsComponent,
     ViewAllRequestsComponent,
     ManagerViewAllPetsComponent,
-    EditPetComponent
+    EditPetComponent,
+    OffcanvasComponent
   ],
   imports: [
     BrowserModule,
