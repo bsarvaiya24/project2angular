@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-view-all-requests',
   templateUrl: './view-all-requests.component.html',
