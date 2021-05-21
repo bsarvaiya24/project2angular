@@ -19,6 +19,9 @@ import { ManagerViewAllPetsComponent } from './manager-view-all-pets/manager-vie
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { EditPetComponent } from './edit-pet/edit-pet.component';
 import { OffcanvasComponent } from './offcanvas/offcanvas.component';
+import { ModalLoginComponent } from './modal-login/modal-login.component';
+import { ListRealPetsComponent } from './list-real-pets/list-real-pets.component';
+import { ListVirtualPetsComponent } from './list-virtual-pets/list-virtual-pets.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,10 @@ import { OffcanvasComponent } from './offcanvas/offcanvas.component';
     ViewAllRequestsComponent,
     ManagerViewAllPetsComponent,
     EditPetComponent,
-    OffcanvasComponent
+    OffcanvasComponent,
+    ModalLoginComponent,
+    ListRealPetsComponent,
+    ListVirtualPetsComponent
   ],
   imports: [
     BrowserModule,
