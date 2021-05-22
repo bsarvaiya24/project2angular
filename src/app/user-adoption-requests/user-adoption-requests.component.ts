@@ -8,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserAdoptionRequestsComponent implements OnInit {
 
+  loggedUserType: string;
+
   constructor(private location: Location,) { }
 
   ngOnInit(): void {
+    let loggedUser = JSON.parse(sessionStorage.getItem("loggedUser"));
+    if(!loggedUser){
+    // if(loggedUser.user_role.user_role_id == 1){
+      this.loggedUserType = "none";
+    } else {
+      this.loggedUserType = loggedUser.user_role.user_role;
+    }
   }
 
   goBack() {

@@ -11,14 +11,14 @@
             <span class="navbar-toggler-icon"></span>
         </button> -->
         <!-- collapse navbar-collapse -->
-        <div class=" ms-auto" id="navbarSupportedContent">
+        <div class="ms-auto" id="navbarSupportedContent">
             <!-- <span class=""></span> -->
             <ul class="navbar-nav mb-2 mb-lg-0">
                 <!-- <li class="nav-item">
                     <a class="nav-link" (click)="open(content)">Login / Signup</a>
                 </li> -->
                 <app-modal-login></app-modal-login>
-                <li class="nav-item dropdown m-3">
+                <li *ngIf="isLoggedIn" class="nav-item dropdown m-3">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bi bi-person-circle"></i>
@@ -28,7 +28,7 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" id="logout-link" href="#">Logout</a></li>
+                        <li><a class="dropdown-item" id="logout-link" (click)="logout()">Logout</a></li>
                     </ul>
                 </li>
             </ul>

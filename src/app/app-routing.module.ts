@@ -4,6 +4,7 @@ import { PetDetailsComponent } from './pet-details/pet-details.component';
 import { PetsTableComponent } from './pets-table/pets-table.component';
 import { ListRealPetsComponent } from './list-real-pets/list-real-pets.component';
 import { ListVirtualPetsComponent } from './list-virtual-pets/list-virtual-pets.component';
+import { NavbartopComponent } from './navbartop/navbartop.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard.component';
 import { AddPetComponent } from './add-pet/add-pet.component';
@@ -15,6 +16,7 @@ import { ManagerViewAllPetsComponent } from './manager-view-all-pets/manager-vie
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: 'navbartop', component: NavbartopComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'pets/real', component: ListRealPetsComponent },
   { path: 'pets/virtual', component: ListVirtualPetsComponent },
