@@ -22,6 +22,7 @@ import { OffcanvasComponent } from './offcanvas/offcanvas.component';
 import { ModalLoginComponent } from './modal-login/modal-login.component';
 import { ListRealPetsComponent } from './list-real-pets/list-real-pets.component';
 import { ListVirtualPetsComponent } from './list-virtual-pets/list-virtual-pets.component';
+import { UserAdoptionRequestsComponent } from './user-adoption-requests/user-adoption-requests.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ListVirtualPetsComponent } from './list-virtual-pets/list-virtual-pets.
     OffcanvasComponent,
     ModalLoginComponent,
     ListRealPetsComponent,
-    ListVirtualPetsComponent
+    ListVirtualPetsComponent,
+    UserAdoptionRequestsComponent
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,7 @@ import { AddPetComponent } from './add-pet/add-pet.component';
 import { EditPetComponent } from './edit-pet/edit-pet.component';
 import { AdoptionRequestDetailsComponent } from './adoption-request-details/adoption-request-details.component';
 import { ViewAllRequestsComponent } from './view-all-requests/view-all-requests.component';
+import { UserAdoptionRequestsComponent } from './user-adoption-requests/user-adoption-requests.component';
 import { ManagerViewAllPetsComponent } from './manager-view-all-pets/manager-view-all-pets.component';
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
   //TODO 'pet/{{ id }}'
   { path: 'virtual_pets/:id', component: PetDetailsComponent },
   { path: 'adoption_request_details/:id', component: AdoptionRequestDetailsComponent },
+  { path: 'adoption_request/:id', component: UserAdoptionRequestsComponent },
   { path: 'manager_dashboard', component: ManagerDashboardComponent },
   { path: 'view_all_pets', component: ManagerViewAllPetsComponent },
   { path: 'view_all_requests', component: ViewAllRequestsComponent },
