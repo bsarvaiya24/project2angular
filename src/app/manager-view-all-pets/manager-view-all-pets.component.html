@@ -18,7 +18,7 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody>
+            <!-- <tbody>
                 <tr>
                     <td><img src="https://pbs.twimg.com/media/C5FXA5BXAAANel3.jpg" alt="koda dog" width="200px" height="140px" routerLink="/adoption_request_details/1"></td>
                     <td>Koda</td>
@@ -33,16 +33,29 @@
                                 <i class="bi bi-journal-check"></i>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown_action_i">
-                                <li routerLink="/pets/1/edit"> <!-- routerLink="/pets/{{ pet.id }}/edit" -->
+                                <li routerLink="/pets/1/edit"> routerLink="/pets/{{ pet.id }}/edit"
                                     <a id="a_edit_i" class="dropdown-item">Edit</a>
                                 </li>
-                                <li (click)="open('autofocus')"> <!-- (click)="delete({{ pet_i }})" -->
+                                <li (click)="open('autofocus')"> (click)="delete({{ pet_i }})"
                                     <a id="a_edit_i" class="dropdown-item">Delete</a>
                                 </li>
                             </ul>
                         </div>
                     </td>
                 </tr>
+            </tbody> -->
+            <tbody>
+                <ng-container *ngFor="let pet of petList; let i = index;">
+                    <tr>
+                        <td routerLink="/pets/{{ pet.pet_id }}"><img src="data:image/png;base64,{{ pet.pet_image }}" alt="{{pet.pet_name}}"></td>
+                        <td><button class="btn btn-primary" routerLink="/virtual_pets/{{ pet.id }}">{{ pet.pet_id }}</button></td>
+                        <td>{{ pet.pet_name }}</td>
+                        <td>{{ pet.pet_age }}</td>
+                        <td>{{ pet.pet_species }}</td>
+                        <td>{{ pet.pet_breed }}</td>
+                        <td style="width: 20%">{{ pet.pet_description }}</td>
+                    </tr>
+                </ng-container>
             </tbody>
         </table>
 

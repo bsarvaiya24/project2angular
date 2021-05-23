@@ -67,12 +67,17 @@ export class ModalLoginComponent implements OnInit {
       // console.log("Returned from server ");
       // console.log(user.user_role.user_role);
       sessionStorage.setItem("loggedUser",JSON.stringify(user));
-      sessionStorage.setItem("loggedUserRole",user.user_role.user_role);
+      let role = user.user_role.user_role;
+      sessionStorage.setItem("loggedUserRole",role);
       this.loginSuccess = true;
       setTimeout(function() { 
         this.isLoggedIn = true;
-        location.reload();
-      },5000);
+        if(role == "manager"){
+          location.replace("/manager_dashboard");
+        } else {
+          location.replace("/");
+        }
+      },3000);
     });
   }
 
