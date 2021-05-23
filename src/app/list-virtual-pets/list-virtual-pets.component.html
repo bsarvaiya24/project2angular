@@ -1,6 +1,6 @@
 
-<main class="p-3">
-    <div class="table-responsive m-5 p-5 border border-dark rounded-top">
+<main class="p-1">
+    <div class="table-responsive my-5 p-3 border border-dark rounded-top">
         <span>User-Virtual-Pets</span>
         <table id="virtual_pets_table" class="table table-striped data-table" style="width: 100%">
             <thead>
@@ -14,23 +14,19 @@
                     <th>Descripton</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <button class="btn btn-primary" routerLink="/pets/1">Pet with id</button>
-                    </td>
-                </tr>
-            </tbody>
             <tbody *ngIf="virtualPets">
-                <ng-container *ngFor="let pet of realPets; let i = index;">
+                <ng-container *ngFor="let pet of virtualPets; let i = index;">
                     <tr>
-                        <td routerLink="/virtual_pets/{{ pet.id }}"><img [src]="pet.sprite" alt="pet.name"></td>
-                        <td><button class="btn btn-primary" routerLink="/virtual_pets/{{ pet.id }}">{{ pet.id }}</button></td>
-                        <td>{{ pet.name }}</td>
-                        <td>{{ pet.age | number: '1.0-0' }}</td>
-                        <td>{{ pet.species }}</td>
-                        <td>{{ pet.breed }}</td>
-                        <td style="width: 20%">{{ pet.description }}</td>
+                        <td routerLink="/pets/{{ pet.pet_id }}">
+                            <img *ngIf="!(pet.pet_image==null)" src="data:image/png;base64,{{ pet.pet_image }}" alt="{{pet.pet_name}}">
+                            <img *ngIf="(pet.pet_image==null)" alt="{{pet.pet_name}}">
+                        </td>
+                        <td><button class="btn btn-primary" routerLink="/pets/{{ pet.pet_id }}">{{ pet.pet_id }}</button></td>
+                        <td>{{ pet.pet_name }}</td>
+                        <td>{{ pet.pet_age }}</td>
+                        <td>{{ pet.pet_species }}</td>
+                        <td>{{ pet.pet_breed }}</td>
+                        <td style="width: 20%">{{ pet.pet_description }}</td>
                     </tr>
                 </ng-container>
             </tbody>

@@ -1,11 +1,11 @@
-<main class="p-3">
-    <div class="table-responsive m-5 p-5 border border-dark rounded-top">
+<main class="py-3">
+    <div class="table-responsive my-3 p-3 border border-dark rounded-top">
         <span>Pets-table-component</span>
         <table id="virtual_pets_table" class="table table-striped data-table" style="width: 100%">
             <thead>
                 <tr>
                     <th>Image</th>
-                    <th>Pet Id</th>
+                    <th>Action</th>
                     <th>Pet Name</th>
                     <th>Age</th>
                     <th>Species</th>
@@ -16,8 +16,20 @@
             <tbody>
                 <ng-container *ngFor="let pokemon of virtualPets; let i = index;">
                     <tr>
-                        <td routerLink="/virtual_pets/{{ pokemon.id }}"><img [src]="pokemon.sprite" alt="pokemon.name"></td>
-                        <td><button class="btn btn-primary" routerLink="/virtual_pets/{{ pokemon.id }}">{{ pokemon.id }}</button></td>
+                        <td><img [src]="pokemon.sprite" alt="pokemon.name"></td>
+                        <td>
+                            <!-- <button class="btn btn-primary" routerLink="/virtual_pets/{{ pokemon.id }}">{{ pokemon.id }}</button> -->
+                            <div class="dropdown">
+                                <button class="btn btn-primary" id="dropdown_action_i" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-journal-check"></i>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdown_action_i">
+                                    <li>
+                                        <a id="a_edit_{{ pokemon.id }}" class="dropdown-item" (click)="addVirtualPet( pokemon.id )">Add Pet</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
                         <td>{{ pokemon.name }}</td>
                         <td>{{ pokemon.age | number: '1.0-0' }}</td>
                         <td>{{ pokemon.species }}</td>

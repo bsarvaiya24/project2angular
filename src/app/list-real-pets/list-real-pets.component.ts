@@ -20,7 +20,6 @@ export class ListRealPetsComponent implements OnInit {
 
   getRealPets(){
     this.myPetService.getAllPets().subscribe((results) => {
-      console.log(results);
       for (var result of results) {
         if(result.pet_type.pet_type_id === 1){
           this.realPets.push(result);

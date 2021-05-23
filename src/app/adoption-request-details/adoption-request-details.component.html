@@ -1,52 +1,53 @@
-<main class="p-5">
+<main class="p-3">
     <button class="btn btn-secondary my-3" (click)="goBack()">Back</button>
 
     <div class="container-fluid border border-dark p-4">
-        <div class="row">Adoption Request Details</div>
+        <div class="row px-3">Adoption Request Details</div>
         <hr>
 
         <!-- Details Panel -->
-        <div class="row p-5">
+        <div *ngIf="adoptionRequest" class="row p-2">
 
             <!-- Pet Details Panel -->
             <div class="col-lg-6">Pet Details
                 <div class="container-fluid border border-dark">
                     <div class="p-3 d-flex justify-content-center">
-                        <img src="https://pbs.twimg.com/media/C5FXA5BXAAANel3.jpg" alt="pet name alt text" class="border border-bottom-0" width="200px" height="140px">
+                        <img *ngIf="!(adoptionRequest.adoption_request_pet.pet_image==null)" src="data:image/png;base64,{{ adoptionRequest.adoption_request_pet.pet_image }}" alt="{{adoptionRequest.adoption_request_pet.pet_name}}" class="border border-bottom-0">
+                        <img *ngIf="(adoptionRequest.adoption_request_pet.pet_image==null)" alt="{{adoptionRequest.adoption_request_pet.pet_name}}" class="border border-bottom-0">
                     </div>
                     <div class="p-2">
                         <span class="col-md-3">Pet Name: </span>
                         <span class="input-group mb-3 col-md-3">
                             <!-- [value]="virtualPet.name" -->
-                            <input type="text" class="form-control" value="static name" disabled>
+                            <input type="text" class="form-control" value="{{adoptionRequest.adoption_request_pet.pet_name}}" disabled>
                         </span>
                     </div>
                     <div class="p-2">
                         <span class="col-md-3">Pet Age: </span>
                         <span class="input-group mb-3 col-md-3">
                             <!-- [value]="virtualPet.age" -->
-                            <input type="text" class="form-control" value="static age" disabled>
+                            <input type="text" class="form-control" value="{{adoptionRequest.adoption_request_pet.pet_age}}" disabled>
                         </span>
                     </div>
                     <div class="p-2">
                         <span class="col-md-3">Pet Species: </span>
                         <span class="input-group mb-3 col-md-3">
                             <!-- [value]="virtualPet.species" -->
-                            <input type="text" class="form-control" value="static species" disabled>
+                            <input type="text" class="form-control" value="{{adoptionRequest.adoption_request_pet.pet_species}}" disabled>
                         </span>
                     </div>
                     <div class="p-2">
                         <span class="col-md-3">Pet Breed: </span>
                         <span class="input-group mb-3 col-md-3">
                             <!-- [value]="virtualPet.breed" -->
-                            <input type="text" class="form-control" value="static breed" disabled>
+                            <input type="text" class="form-control" value="{{adoptionRequest.adoption_request_pet.pet_breed}}" disabled>
                         </span>
                     </div>
                     <div class="p-2">
                         <span class="col-md-3">Pet Description: </span>
                         <span class="input-group mb-3 col-md-3">
                             <!-- [value]="virtualPet.description" -->
-                            <textarea class="form-control" cols="30" rows="3" disabled>
+                            <textarea class="form-control" cols="30" rows="3" value="{{adoptionRequest.adoption_request_pet.pet_description}}" disabled>
                             </textarea>
                         </span>
                     </div>
@@ -63,35 +64,40 @@
                             <span class="col-md-3">User Fullname: </span>
                             <span class="input-group mb-3 col-md-3">
                                 <!-- [value]="virtualPet.name" -->
-                                <input type="text" class="form-control" value="static user fullname" disabled>
+                                <input type="text" class="form-control" value="{{adoptionRequest.adoption_request_user.first_name}} {{adoptionRequest.adoption_request_user.last_name}}" disabled>
                             </span>
                         </div>
                         <div class="p-2">
                             <span class="col-md-3">Request Description: </span>
                             <span class="input-group mb-3 col-md-3">
                                 <!-- [value]="virtualPet.description" -->
-                                <textarea class="form-control" cols="30" rows="3" disabled>
+                                <textarea class="form-control" cols="30" rows="3" value="{{adoptionRequest.adoption_request_description}}" disabled>
                                 </textarea>
                             </span>
                         </div>
                     </div>
                 </div>
-                <div class="row"> Manager Section (*ngIf = clickApprove || clickDeny)
+                <div class="row" *ngIf="!(adoptionRequest.adoption_request_status.adoption_request_status_id>1) && isManager"> Manager Section (*ngIf = clickApprove || clickDeny)
                     <div class="container-fluid border border-dark py-3">
                         <div class="p-2">
                             <span class="col-md-3">Response Description: </span>
                             <span class="input-group mb-3 col-md-3">
                                 <!-- [value]="virtualPet.description" -->
-                                <textarea class="form-control" cols="30" rows="3" placeholder="Type here the Reason for approval/denial of this request.">
+                                <textarea class="form-control" cols="30" rows="3" placeholder="Type here the Reason for approval/denial of this request." [(ngModel)]="responseDescription">
                                 </textarea>
                             </span>
                         </div>
                         <div class="p-2">
                             *ngIf(clickDeny)
-                            <button class="btn btn-danger  mx-3">Deny</button>
+                            <button class="btn btn-danger  mx-3" (click)="denyRequest()">Deny</button>
                             *ngIf(clickApprove)
-                            <button class="btn btn-success  mx-3">Approve</button>
+                            <button class="btn btn-success  mx-3" (click)="approveRequest()">Approve</button>
                         </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="container-fluid border border-dark py-3">
+                        <span class="col-md-3">This adoption request is : {{ adoptionRequest.adoption_request_status.adoption_request_status }} </span>
                     </div>
                 </div>
                 
@@ -101,15 +107,14 @@
         </div>
         <!-- Details Panel -->
 
-
         <!-- Action Panel -->
-        <div class="row px-5">
+        <!-- <div class="row px-5">
             <div class="container-fluid d-flex justify-content-end">
                 <button class="btn btn-outline-secondary mx-3">Back</button>
                 <button class="btn btn-outline-danger  mx-3">Deny</button>
                 <button class="btn btn-outline-success  mx-3">Approve</button>
             </div>
-        </div>
+        </div> -->
         <!-- Action Panel -->
 
     </div>

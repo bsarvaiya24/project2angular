@@ -1,5 +1,8 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { AdoptionRequest } from 'src/model/AdoptionRequest';
+import { MyAdoptionService } from '../my-adoption.service';
 
 @Component({
   selector: 'app-user-adoption-requests',
@@ -8,22 +11,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserAdoptionRequestsComponent implements OnInit {
 
-  loggedUserType: string;
+  adoptionRequests: AdoptionRequest[] = [];
 
-  constructor(private location: Location,) { }
+  constructor(private location: Location, private route: ActivatedRoute, private myAdoptionService: MyAdoptionService) { }
 
   ngOnInit(): void {
-    let loggedUser = JSON.parse(sessionStorage.getItem("loggedUser"));
-    if(!loggedUser){
-    // if(loggedUser.user_role.user_role_id == 1){
-      this.loggedUserType = "none";
-    } else {
-      this.loggedUserType = loggedUser.user_role.user_role;
-    }
+    this.getUserRequests();
+  }
+
+  getUserRequests() {
+    const userId = +this.route.snapshot.paramMap.get('id');
+    this.myAdoptionService.getAllAdoptionRequests().subscribe((requests) => {
+      console.log(requests);
+      for (var request of requests) {
+        if(request.adoption_request_user.user_id === userId){
+          this.adoptionRequests.push(request);
+        }
+      }
+    });
   }
 
   goBack() {
     this.location.back();
   }
+
+
 
 }

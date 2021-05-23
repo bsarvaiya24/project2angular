@@ -47,8 +47,11 @@
             <tbody>
                 <ng-container *ngFor="let pet of petList; let i = index;">
                     <tr>
-                        <td routerLink="/pets/{{ pet.pet_id }}"><img src="data:image/png;base64,{{ pet.pet_image }}" alt="{{pet.pet_name}}"></td>
-                        <td><button class="btn btn-primary" routerLink="/virtual_pets/{{ pet.id }}">{{ pet.pet_id }}</button></td>
+                        <td routerLink="/pets/{{ pet.pet_id }}">
+                            <img *ngIf="!(pet.pet_image==null)" src="data:image/png;base64,{{ pet.pet_image }}" alt="{{pet.pet_name}}">
+                            <img *ngIf="(pet.pet_image==null)" alt="{{pet.pet_name}}">
+                        </td>
+                        <td><button class="btn btn-primary" routerLink="/pets/{{ pet.pet_id }}">{{ pet.pet_id }}</button></td>
                         <td>{{ pet.pet_name }}</td>
                         <td>{{ pet.pet_age }}</td>
                         <td>{{ pet.pet_species }}</td>

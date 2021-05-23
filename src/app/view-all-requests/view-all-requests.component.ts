@@ -1,5 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { AdoptionRequest } from 'src/model/AdoptionRequest';
+import { MyAdoptionService } from '../my-adoption.service';
 
 
 @Component({
@@ -9,9 +11,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewAllRequestsComponent implements OnInit {
 
-  constructor(private location: Location,) { }
+  adoptionRequests: AdoptionRequest[] = [];
+
+  constructor(private location: Location, private myAdoptionService: MyAdoptionService) { }
 
   ngOnInit(): void {
+    this.getAllRequests();
+  }
+
+  getAllRequests() {
+    this.myAdoptionService.getAllAdoptionRequests().subscribe((requests) => {
+      console.log(requests);
+      for (var request of requests) {
+        this.adoptionRequests.push(request);
+      }
+    });
   }
 
   goBack() {

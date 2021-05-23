@@ -2,8 +2,7 @@
     <button class="btn btn-secondary my-3" (click)="goBack()">Back</button>
 
     <div class="table-responsive p-4 border border-dark rounded-top">
-        <span>*STATIC* Current User Adoption Requests</span>
-        <p>User {{ loggedUserType }}</p>
+        <span>Current User Adoption Requests</span>
 
         <div class="row">
             <div class="dropdown d-flex">
@@ -22,7 +21,7 @@
         <table id="view_all_requests" class="table table-striped data-table" style="width: 100%">
             <thead>
                 <tr>
-                    <th>Request Id</th>
+                    <th>Request Details</th>
                     <th>Request Status</th>
                     <th>User Fullname</th>
                     <th>Pet Name</th>
@@ -34,19 +33,22 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        <button class="btn btn-primary" routerLink="/adoption_request_details/1">1</button>
-                    </td>
-                    <td>Pending</td>
-                    <td>Mariah Smith</td>
-                    <td>Koda</td>
-                    <td>5</td>
-                    <td>real</td>
-                    <td>dog</td>
-                    <td>great pyrenees</td>
-                    <td><img src="https://pbs.twimg.com/media/C5FXA5BXAAANel3.jpg" alt="koda dog" width="200px" height="140px" routerLink="/adoption_request_details/1"></td>
-                </tr>
+                <ng-container *ngFor="let request of adoptionRequests; let i = index;">
+                    <tr>
+                        <td><button class="btn btn-primary" routerLink="/adoption_request_details/{{ request.adoption_request_id }}"><i class="bi bi-journal-text"></i></button></td>
+                        <td>{{ request.adoption_request_status.adoption_request_status }}</td>
+                        <td>{{ request.adoption_request_user.first_name }} {{ request.adoption_request_user.last_name }}</td>
+                        <td>{{ request.adoption_request_pet.pet_name }}</td>
+                        <td>{{ request.adoption_request_pet.pet_age }}</td>
+                        <td>{{ request.adoption_request_pet.pet_type.pet_type }}</td>
+                        <td>{{ request.adoption_request_pet.pet_status.pet_status }}</td>
+                        <td>{{ request.adoption_request_pet.pet_breed }}</td>
+                        <td routerLink="/adoption_request_details/{{ request.adoption_request_id }}">
+                            <img *ngIf="!(request.adoption_request_pet.pet_image==null)" src="data:image/png;base64,{{ request.adoption_request_pet.pet_image }}" alt="{{request.adoption_request_pet.pet_name}}">
+                            <img *ngIf="(request.adoption_request_pet.pet_image==null)" alt="{{request.adoption_request_pet.pet_name}}">
+                        </td>
+                    </tr>
+                </ng-container>
             </tbody>
         </table>
     </div>

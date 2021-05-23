@@ -59,7 +59,6 @@ export class AddPetComponent implements OnInit {
       pet_type: formValue.pet_type,
       pet_image: this.file
     };
-    console.log(petDTO);
     this.myPetService.addPet(petDTO).subscribe(event => {
       console.log(event);
     });

@@ -1,6 +1,6 @@
 
 <main class="p-1">
-    <div class="table-responsive my-5 p-5 border border-dark rounded-top">
+    <div class="table-responsive my-5 p-3 border border-dark rounded-top">
         <span>User-Real-Pets</span>
         <table id="virtual_pets_table" class="table table-striped data-table" style="width: 100%">
             <thead>
@@ -17,7 +17,10 @@
             <tbody *ngIf="realPets">
                 <ng-container *ngFor="let pet of realPets; let i = index;">
                     <tr>
-                        <td routerLink="/pets/{{ pet.pet_id }}"><img src="data:image/png;base64,{{ pet.pet_image }}" alt="{{pet.pet_name}}"></td>
+                        <td routerLink="/pets/{{ pet.pet_id }}">
+                            <img *ngIf="!(pet.pet_image==null)" src="data:image/png;base64,{{ pet.pet_image }}" alt="{{pet.pet_name}}">
+                            <img *ngIf="(pet.pet_image==null)" alt="{{pet.pet_name}}">
+                        </td>
                         <td><button class="btn btn-primary" routerLink="/pets/{{ pet.pet_id }}">{{ pet.pet_id }}</button></td>
                         <td>{{ pet.pet_name }}</td>
                         <td>{{ pet.pet_age }}</td>

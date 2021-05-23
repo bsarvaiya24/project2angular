@@ -6,7 +6,8 @@ import { MyPokemonService } from '../my-pokemon.service';
 import { MyPokemonSpeciesService } from '../my-pokemon-species.service';
 import { Pet } from 'src/model/PetDTO';
 import { MyPetService } from '../my-pet.service';
-import { AdoptionRequest } from 'src/model/AdoptionRequest';
+import { AdoptionRequestDTO } from 'src/model/AdoptionRequest';
+import { MyAdoptionService } from '../my-adoption.service';
 
 @Component({
   selector: 'app-pet-details',
@@ -19,7 +20,7 @@ export class PetDetailsComponent implements OnInit {
   showAdoption: boolean = false;
   requestDescription: string;
 
-  constructor(private route: ActivatedRoute, private location: Location, private myPokemonService: MyPokemonService, private myPokemonSpeciesService: MyPokemonSpeciesService, private myPetService: MyPetService ) { }
+  constructor(private route: ActivatedRoute, private location: Location, private myPokemonService: MyPokemonService, private myPokemonSpeciesService: MyPokemonSpeciesService, private myPetService: MyPetService, private myAdoptionService: MyAdoptionService ) { }
 
   ngOnInit(): void {
     // this.getVirtualPet();
@@ -100,11 +101,11 @@ export class PetDetailsComponent implements OnInit {
   }
 
   submitRequest(): void {
-    let adoptionRequest: AdoptionRequest = {
+    let adoptionRequestDTO: AdoptionRequestDTO = {
       petId: this.pet.pet_id,
       description: this.requestDescription
     }
-    this.myPetService.addAdoptionRequest(adoptionRequest).subscribe(event => {
+    this.myAdoptionService.addAdoptionRequest(adoptionRequestDTO).subscribe(event => {
       console.log(event);
     });
   }

@@ -49,9 +49,5 @@ export class MyPetService {
   addPet(petDTO: PetDTO){
     return this.httpClient.post<PetDTO>(`http://localhost:8080/PetPushers/create_pet_adoption`, petDTO, this.postPetHttpOptions);
   }
-
-  addAdoptionRequest(adoptionRequest: AdoptionRequest){
-    return this.httpClient.post<PetDTO>(`http://localhost:8080/PetPushers/make_adoption_request`, adoptionRequest, this.postPetHttpOptions);
-  }
-
+  
 }

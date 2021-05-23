@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MyPokemonService } from '../my-pokemon.service';
 import { MyPokemonSpeciesService } from '../my-pokemon-species.service';
 import { VirtualPet } from 'src/model/virtualPet';
+import { PetDTO } from 'src/model/PetDTO';
+import { MyPetService } from '../my-pet.service';
 
 @Component({
   selector: 'app-pets-table',
@@ -14,6 +16,8 @@ export class PetsTableComponent implements OnInit {
 
   randomNumbers: number[] = [];
 
+  imageToStore: string | ArrayBuffer;
+
   generateRandomNumbers() {
     while(this.randomNumbers.length < 10){
       var r = Math.floor(Math.random() * 898) + 1;
@@ -21,7 +25,7 @@ export class PetsTableComponent implements OnInit {
     }
   }
 
-  constructor(private myPokemonService: MyPokemonService, private myPokemonSpeciesService: MyPokemonSpeciesService) { 
+  constructor(private myPokemonService: MyPokemonService, private myPokemonSpeciesService: MyPokemonSpeciesService, private myPetService: MyPetService) { 
     this.myPokemonService=myPokemonService;
     this.myPokemonSpeciesService=myPokemonSpeciesService;
   }
@@ -29,19 +33,6 @@ export class PetsTableComponent implements OnInit {
   ngOnInit(): void {
     this.generateRandomNumbers();
     this.onGetPokemon();
-
-    // TRYING TO SAVE THE LIST OF POKEMON FOR CURRENT USER
-    
-    // if (!sessionStorage.getItem('yourComponentNameLoadedAlready')) {
-    // if (this.virtualPets.length === 0) {
-    // localStorage.removeItem('virtualPets');
-    // console.log(JSON.parse(localStorage.getItem('virtualPets')));
-    // if (JSON.parse(localStorage.getItem('virtualPets')) == null) {
-    //   this.generateRandomNumbers();
-    //   this.onGetPokemon();
-    // } else {
-    //   this.virtualPets = JSON.parse(localStorage.getItem('virtualPet'));
-    // }
     
   }
 
@@ -49,8 +40,6 @@ export class PetsTableComponent implements OnInit {
     
     for(let i=0; i<this.randomNumbers.length; i++) {
       this.myPokemonService.getPokemon(this.randomNumbers[i]).subscribe((pokemon) => {
-        // console.log(this.pokemons);
-        // console.log(pokemon);
         let id = pokemon.id;
         let pet_type_id = 2;
         let pet_type = "virtual";
@@ -80,17 +69,20 @@ export class PetsTableComponent implements OnInit {
         this.myPokemonSpeciesService.getPokemonSpecies(this.randomNumbers[i]).subscribe((pokemonSpecies) => {
           let egg_groups = pokemonSpecies.egg_groups;
           let flavor_text_entries = pokemonSpecies.flavor_text_entries;
-          // console.log("egg_groups length: "+egg_groups.length);
-          // console.log("flavor_text_entries length: "+flavor_text_entries.length);
           for(let i = 0; i < egg_groups.length; i++){
             if(i==0){
               description += flavor_text_entries[i].flavor_text;
             }
-            // console.log(egg_groups[i].name);
             breed += egg_groups[i].name;
             if(i != egg_groups.length-1){
               breed += "-";
             }
+          }
+          if(breed==""){
+            breed="pokemon"
+          }
+          if(description==""){
+            description="No description found."
           }
           newVirtualPet.breed = breed;
           newVirtualPet.description = description;
@@ -100,24 +92,32 @@ export class PetsTableComponent implements OnInit {
   
       });
     }
+  }
 
-    // TRYING TO SAVE THE LIST OF POKEMON FOR CURRENT USER
+  addVirtualPet(currentPetId) {
+    console.log(currentPetId);
+    for (let virtualPet of this.virtualPets) {
+      if(virtualPet.id === currentPetId){
 
-    // console.log(this.virtualPets);
-    // console.log(this.virtualPets.join());
-    // console.log(JSON.stringify(this.virtualPets));
+        this.myPokemonService.getImage(virtualPet.sprite).subscribe(base64data => {
+          let base64Image = 'data:image/jpg;base64,'+base64data;
+          const petDTO: PetDTO = {
+            pet_name: virtualPet.name,
+            pet_age: virtualPet.age,
+            pet_species: virtualPet.species,
+            pet_breed: virtualPet.breed,
+            pet_description: virtualPet.description,
+            pet_type: "digital",
+            pet_image: base64Image.split(",")[1]
+          };
+          console.log(petDTO);
+          this.myPetService.addPet(petDTO).subscribe(event => {
+            console.log(event);
+          });
+        });
 
-    // let virtualPetsObject: { key: string, value: VirtualPet[] } = { key: "virtualPets", value: this.virtualPets };
-    // console.log(virtualPetsObject);
-
-    // virtualPetsObject.key = 'virtualPets';
-    // virtualPetsObject.value = this.virtualPets;
-
-    // localStorage.removeItem('virtualPets');
-    // localStorage.setItem('virtualPets',JSON.stringify(this.virtualPets));
-    // console.log(JSON.parse(localStorage.getItem('virtualPets')));
+      }
+    }
   }
 
 }
-
-
