@@ -29,11 +29,11 @@ export class MyUserService {
   constructor(private httpClient: HttpClient) { }
 
   postLogin(loginDTO: LoginDTO) {
-    return this.httpClient.post<User>(`http://localhost:8080/PetPushers/login_account`, loginDTO, this.postHttpOptions);
+    return this.httpClient.post<User>(`http://ec2-3-134-105-36.us-east-2.compute.amazonaws.com:8080/PetPushers/login_account`, loginDTO, this.postHttpOptions);
   }
 
   getLogout() {
-    return this.httpClient.get<MessageDTO>(`http://localhost:8080/PetPushers/logout_account`, this.getHttpOptions).pipe(
+    return this.httpClient.get<MessageDTO>(`http://ec2-3-134-105-36.us-east-2.compute.amazonaws.com:8080/PetPushers/logout_account`, this.getHttpOptions).pipe(
       catchError(error => {
         let errorMsg: string;
         if (error.error instanceof ErrorEvent) {
@@ -70,11 +70,11 @@ export class MyUserService {
   }
 
   postSignup(userDTO: UserDTO) {
-    return this.httpClient.post<LoginDTO>(`http://localhost:8080/PetPushers/register_account`, userDTO, this.postHttpOptions);
+    return this.httpClient.post<LoginDTO>(`http://ec2-3-134-105-36.us-east-2.compute.amazonaws.com:8080/PetPushers/register_account`, userDTO, this.postHttpOptions);
   }
 
   test() {
-    return this.httpClient.get<MessageDTO>(`http://localhost:8080/PetPushers/test`, {
+    return this.httpClient.get<MessageDTO>(`http://ec2-3-134-105-36.us-east-2.compute.amazonaws.com:8080/PetPushers/test`, {
       withCredentials: true,
     });
 

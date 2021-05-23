@@ -26,23 +26,23 @@ export class MyAdoptionService {
   };
 
   addAdoptionRequest(adoptionRequest: AdoptionRequestDTO){
-    return this.httpClient.post<AdoptionRequestDTO>(`http://localhost:8080/PetPushers/make_adoption_request`, adoptionRequest, this.postPetHttpOptions);
+    return this.httpClient.post<AdoptionRequestDTO>(`http://ec2-3-134-105-36.us-east-2.compute.amazonaws.com:8080/PetPushers/make_adoption_request`, adoptionRequest, this.postPetHttpOptions);
   }
 
   putAdoptionRequestResponse(requestId: number,updateAdoptionRequestDTO: UpdateAdoptionRequestDTO){
-    return this.httpClient.put<AdoptionRequest>(`http://localhost:8080/PetPushers/update_adoption_request/${requestId}`, updateAdoptionRequestDTO, this.postPetHttpOptions);
+    return this.httpClient.put<AdoptionRequest>(`http://ec2-3-134-105-36.us-east-2.compute.amazonaws.com:8080/PetPushers/update_adoption_request/${requestId}`, updateAdoptionRequestDTO, this.postPetHttpOptions);
   }
 
   getAllAdoptionRequests() {
-    return this.httpClient.get<AdoptionRequest[]>(`http://localhost:8080/PetPushers/view_adoption_status`, this.getHttpOptions);
+    return this.httpClient.get<AdoptionRequest[]>(`http://ec2-3-134-105-36.us-east-2.compute.amazonaws.com:8080/PetPushers/view_adoption_status`, this.getHttpOptions);
   }
 
   getUserAdoptionRequests(userId: number) {
-    return this.httpClient.get<AdoptionRequest[]>(`http://localhost:8080/PetPushers/view_adoption_status/${userId}`, this.getHttpOptions);
+    return this.httpClient.get<AdoptionRequest[]>(`http://ec2-3-134-105-36.us-east-2.compute.amazonaws.com:8080/PetPushers/view_adoption_status/${userId}`, this.getHttpOptions);
   }
 
   getAdoptionRequestWithId(id: number) {
-    return this.httpClient.get<AdoptionRequest>(`http://localhost:8080/PetPushers/view_adoption_status/${id}`, this.getHttpOptions);
+    return this.httpClient.get<AdoptionRequest>(`http://ec2-3-134-105-36.us-east-2.compute.amazonaws.com:8080/PetPushers/view_adoption_status/${id}`, this.getHttpOptions);
   }
 
 }

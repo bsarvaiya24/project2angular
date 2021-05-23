@@ -35,19 +35,19 @@ export class MyPetService {
   constructor(private httpClient: HttpClient) { }
 
   getRealPets(){
-    return this.httpClient.get<VirtualPet[]>(`http://localhost:8080/PetPushers/view_adoptable_pet`, this.getHttpOptions);
+    return this.httpClient.get<VirtualPet[]>(`http://ec2-3-134-105-36.us-east-2.compute.amazonaws.com:8080/PetPushers/view_adoptable_pet`, this.getHttpOptions);
   }
 
   getAllPets(){
-    return this.httpClient.get<Pet[]>(`http://localhost:8080/PetPushers/view_adoptable_pet`, this.getHttpOptions);
+    return this.httpClient.get<Pet[]>(`http://ec2-3-134-105-36.us-east-2.compute.amazonaws.com:8080/PetPushers/view_adoptable_pet`, this.getHttpOptions);
   }
 
   getPetWithId(id: number){
-    return this.httpClient.get<Pet>(`http://localhost:8080/PetPushers/view_adoptable_pet/${id}`, this.getHttpOptions);
+    return this.httpClient.get<Pet>(`http://ec2-3-134-105-36.us-east-2.compute.amazonaws.com:8080/PetPushers/view_adoptable_pet/${id}`, this.getHttpOptions);
   }
 
   addPet(petDTO: PetDTO){
-    return this.httpClient.post<PetDTO>(`http://localhost:8080/PetPushers/create_pet_adoption`, petDTO, this.postPetHttpOptions);
+    return this.httpClient.post<PetDTO>(`http://ec2-3-134-105-36.us-east-2.compute.amazonaws.com:8080/PetPushers/create_pet_adoption`, petDTO, this.postPetHttpOptions);
   }
   
 }

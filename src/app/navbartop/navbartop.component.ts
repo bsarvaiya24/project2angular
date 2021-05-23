@@ -27,7 +27,7 @@ export class NavbartopComponent implements OnInit {
         console.log(response);
         console.log("Returned from server : Logout successful");
         sessionStorage.removeItem("loggedUser");
-        location.replace("/");
+        location.replace("/PetPushersAngular/");
       });
     }
   }

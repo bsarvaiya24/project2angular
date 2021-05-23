@@ -101,13 +101,17 @@ export class PetDetailsComponent implements OnInit {
   }
 
   submitRequest(): void {
-    let adoptionRequestDTO: AdoptionRequestDTO = {
-      petId: this.pet.pet_id,
-      description: this.requestDescription
+    if(!sessionStorage.getItem("loggedUser")){
+      alert("Please log in to make adoption requests!");
+    } else {
+      let adoptionRequestDTO: AdoptionRequestDTO = {
+        petId: this.pet.pet_id,
+        description: this.requestDescription
+      }
+      this.myAdoptionService.addAdoptionRequest(adoptionRequestDTO).subscribe(event => {
+        console.log(event);
+      });
     }
-    this.myAdoptionService.addAdoptionRequest(adoptionRequestDTO).subscribe(event => {
-      console.log(event);
-    });
   }
 
 }

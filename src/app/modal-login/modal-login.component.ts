@@ -62,21 +62,14 @@ export class ModalLoginComponent implements OnInit {
 
   signIn() {
     let loginDTO: LoginDTO = { username: this.inputUsername, password: this.signInPassword };
-    console.log(loginDTO);
     this.myUserService.postLogin(loginDTO).subscribe((user) => {
-      // console.log("Returned from server ");
-      // console.log(user.user_role.user_role);
       sessionStorage.setItem("loggedUser",JSON.stringify(user));
       let role = user.user_role.user_role;
       sessionStorage.setItem("loggedUserRole",role);
       this.loginSuccess = true;
       setTimeout(function() { 
         this.isLoggedIn = true;
-        if(role == "manager"){
-          location.replace("/manager_dashboard");
-        } else {
-          location.replace("/");
-        }
+        location.replace("/PetPushersAngular/");
       },3000);
     });
   }
@@ -89,7 +82,6 @@ export class ModalLoginComponent implements OnInit {
       last_name: this.inputLastName,
       email: this.inputEmail,
     };
-    // console.log(loginDTO);
     this.myUserService.postSignup(userDTO).subscribe((user) => {
       console.log("Returned from server ");
       console.log(user);
