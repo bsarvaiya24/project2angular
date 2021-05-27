@@ -18,6 +18,7 @@ export class PetDetailsComponent implements OnInit {
 
   pet: Pet;
   showAdoption: boolean = false;
+  submitSuccess: boolean = false;
   requestDescription: string;
 
   constructor(private route: ActivatedRoute, private location: Location, private myPokemonService: MyPokemonService, private myPokemonSpeciesService: MyPokemonSpeciesService, private myPetService: MyPetService, private myAdoptionService: MyAdoptionService ) { }
@@ -110,6 +111,7 @@ export class PetDetailsComponent implements OnInit {
       }
       this.myAdoptionService.addAdoptionRequest(adoptionRequestDTO).subscribe(event => {
         console.log(event);
+        this.submitSuccess = true;
       });
     }
   }

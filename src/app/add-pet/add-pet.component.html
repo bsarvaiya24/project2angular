@@ -63,6 +63,7 @@
                 <div class="col-md-12">
                     <button type="submit" class="btn btn-success mx-2">Submit Pet</button>
                     <button type="button" (click)="clearForm()" class="btn btn-outline-secondary mx-2" disabled>Clear</button>
+                    <p *ngIf="submitSuccess" class="h5" style="color:darkgreen">Login Successful!</p>
                 </div>
             </div>
         </form>

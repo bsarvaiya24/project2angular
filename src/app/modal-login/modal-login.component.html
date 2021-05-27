@@ -1,5 +1,5 @@
 <li *ngIf="!isLoggedIn" class="nav-item">
-    <a class="nav-link fw-bold" (click)="open(content)">Login / Signup</a>
+    <a id="login-navbar-link" class="nav-link fw-bold" (click)="open(content)">Login / Signup</a>
 </li>
 
 <ng-template #content let-modal>
@@ -13,14 +13,15 @@
                 <input type="email" placeholder="Email" name="SignupEmail" [(ngModel)]="inputEmail" required />
                 <input type="password" placeholder="Password" name="SignupPassword" [(ngModel)]="signUpPassword" required />
                 <button (click)="signUp()">Sign Up</button>
+                <p *ngIf="signupSuccess" class="h5" style="color:green">Sign Up Successful!</p>
             </form>
         </div>
         <div class="form-container sign-in-container">
             <form action="#">
                 <h1>Sign in</h1>
-                <input type="email" placeholder="Username" name="SigninUsername" [(ngModel)]="inputUsername"/>
-                <input type="password" placeholder="Password" name="SigninPassword" [(ngModel)]="signInPassword"/>
-                <button (click)="signIn()">Sign In</button>
+                <input id="signin-username" type="email" placeholder="Username" name="SigninUsername" [(ngModel)]="inputUsername"/>
+                <input id="signin-password" type="password" placeholder="Password" name="SigninPassword" [(ngModel)]="signInPassword"/>
+                <button id="signin-submit-button"  (click)="signIn()">Sign In</button>
                 <p *ngIf="loginSuccess" class="h5" style="color:green">Login Successful!</p>
             </form>
         </div>

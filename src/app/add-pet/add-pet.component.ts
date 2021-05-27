@@ -12,6 +12,8 @@ import { PetDTO } from 'src/model/PetDTO';
 })
 export class AddPetComponent implements OnInit {
 
+  submitSuccess: boolean = false;
+
   file: string | ArrayBuffer;
 
   newPet =  new FormGroup({
@@ -60,7 +62,7 @@ export class AddPetComponent implements OnInit {
       pet_image: this.file
     };
     this.myPetService.addPet(petDTO).subscribe(event => {
-      console.log(event);
+      this.submitSuccess = true;
     });
   }
 

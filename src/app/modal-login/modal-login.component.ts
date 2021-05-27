@@ -24,6 +24,7 @@ export class ModalLoginComponent implements OnInit {
   inputEmail: string = "";
 
   isLoggedIn: boolean = false;
+  signupSuccess: boolean = false;
   loginSuccess: boolean = false;
 
   constructor(private modalService: NgbModal, private myUserService: MyUserService) { }
@@ -83,8 +84,8 @@ export class ModalLoginComponent implements OnInit {
       email: this.inputEmail,
     };
     this.myUserService.postSignup(userDTO).subscribe((user) => {
-      console.log("Returned from server ");
-      console.log(user);
+      console.log("Returned from server successfully");
+      this.signupSuccess = true;
     });
     this.clearSignup();
   }

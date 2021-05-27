@@ -1,6 +1,11 @@
 <main class="p-5">
 
     <div class="container-fluid">
+        <div *ngIf="currentUser" class="row m-3 search-trim">
+            <div class="col-md-12">
+                <h3 id="welcome-logged-user"> Welcome {{ currentUser.first_name }} {{ currentUser.last_name }}</h3>
+            </div>
+        </div>
 
         <div class="row m-3 search-trim">
             <div>Search Real Pets</div>
